@@ -5,6 +5,10 @@ Control a 3D cube in the browser with your hands — no installs, just a webcam.
 - **Left hand** — rotates the object
 - **Right hand** — scales it with a pinch gesture (thumb ↔ index finger)
 
+## Demo
+
+![demo](demo.gif)
+
 ## Tech
 
 - JavaScript
