@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Gesture 3D Control — prototype</title>
+    <link rel="stylesheet" href="style.css?v=6">
+
+    <!-- MediaPipe Hands: распознаёт 21 точку на ладони в каждом кадре видео -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4.1675469240/hands.min.js"></script>
+    <!-- camera_utils: удобная обёртка, которая сама гоняет кадры с веб-камеры в MediaPipe -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils@0.3.1675466862/camera_utils.min.js"></script>
+    <!-- drawing_utils: готовые функции для рисования скелета руки на canvas -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils@0.3.1675466124/drawing_utils.min.js"></script>
+
+    <!-- Three.js подключаем как ES-модуль через importmap (современный способ) -->
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
+        }
+    }
+    </script>
+</head>
+<body>
+    <!-- Элемент видео: сюда пойдёт поток с веб-камеры (пока скрыт, включим на этапе 2) -->
+    <video id="cam" playsinline muted></video>
+
+    <!-- Слой для отрисовки точек скелета руки поверх видео -->
+    <canvas id="skeleton"></canvas>
+
+    <!-- Контейнер, куда Three.js вставит свой canvas с 3D-сценой (этап 3) -->
+    <div id="scene3d"></div>
+
+    <!-- Строка статуса: пишем, что загрузилось и что происходит -->
+    <div id="status">Loading libraries…</div>
+
+    <!-- ?v=3 — метка версии: при каждой правке меняем цифру,
+         и браузер грузит свежий файл вместо закэшированного -->
+    <script type="module" src="main.js?v=6"></script>
+</body>
+</html>
